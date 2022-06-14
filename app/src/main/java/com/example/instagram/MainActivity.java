@@ -3,6 +3,7 @@ package com.example.instagram;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,11 +21,14 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    //hello
+
     public static final String TAG = "MainActivity";
 
     protected PostsAdapter adapter;
     protected List<Post> allPosts;
 
+    private SwipeRefreshLayout swipeContainer;
     private RecyclerView rvPosts;
     Button btnNewPost;
     Button btnLogout;
