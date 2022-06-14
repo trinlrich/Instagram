@@ -21,14 +21,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    //hello all
-
     public static final String TAG = "MainActivity";
 
     protected PostsAdapter adapter;
     protected List<Post> allPosts;
 
-    private SwipeRefreshLayout swipeContainer;
     private RecyclerView rvPosts;
     Button btnNewPost;
     Button btnLogout;
