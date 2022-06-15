@@ -3,11 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/selector_button_bg.xml" value="0.224" />
+        <entry key="app/src/main/res/drawable/selector_button_feed.xml" value="0.192" />
+        <entry key="app/src/main/res/drawable/selector_button_post.xml" value="0.192" />
+        <entry key="app/src/main/res/drawable/selector_button_profile.xml" value="0.192" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1889564336372847" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22591857910156252" />
         <entry key="app/src/main/res/layout/activity_post.xml" value="0.203125" />
         <entry key="app/src/main/res/layout/activity_post_detail.xml" value="0.25672664918761323" />
-        <entry key="app/src/main/res/layout/item_post.xml" value="0.6064102172851563" />
+        <entry key="app/src/main/res/layout/fragment_foo.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.24909420289855072" />
+        <entry key="app/src/main/res/layout/fragment_post.xml" value="0.24909420289855072" />
+        <entry key="app/src/main/res/layout/item_post.xml" value="0.20208333333333334" />
+        <entry key="app/src/main/res/menu/menu_bottom_navigation.xml" value="0.2171875" />
         <entry key="app/src/main/res/xml/file_provider.xml" value="0.11775362318840579" />
       </map>
     </option>
