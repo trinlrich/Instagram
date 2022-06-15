@@ -19,7 +19,6 @@ import android.widget.Button;
 import com.example.instagram.EndlessRecyclerViewScrollListener;
 import com.example.instagram.LoginActivity;
 import com.example.instagram.Post;
-import com.example.instagram.PostActivity;
 import com.example.instagram.PostsAdapter;
 import com.example.instagram.R;
 import com.parse.FindCallback;
@@ -191,7 +190,7 @@ public class FeedFragment extends Fragment {
     }
 
     public void onNewPostClick(View view) {
-        Intent intent = new Intent(getContext(), PostActivity.class);
+        Intent intent = new Intent(getContext(), PostFragment.class);
         startActivity(intent);
     }
 
