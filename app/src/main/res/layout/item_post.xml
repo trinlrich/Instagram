@@ -49,5 +49,5 @@
         android:layout_marginStart="@dimen/large_margin"
         android:layout_marginTop="@dimen/small_margin"
         android:layout_marginBottom="@dimen/large_margin"
-        tools:text="1 day ago" />
+        tools:text="1 d" />
 </RelativeLayout>
