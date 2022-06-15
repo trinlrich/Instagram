@@ -1,9 +1,12 @@
 package com.example.instagram;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,12 +14,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.parse.ParseFile;
+
+import org.parceler.Parcels;
 
 import java.util.Date;
 import java.util.List;
 
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
+    private static final String TAG = "PostsAdapter";
+
     private Context context;
     private List<Post> posts;
 
@@ -43,8 +51,9 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
         return posts.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
+        private ImageButton ivProfileImage;
         private TextView tvUsername;
         private ImageView ivImage;
         private TextView tvCaption;
@@ -52,6 +61,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvCaption = itemView.findViewById(R.id.tvCaption);
@@ -63,11 +73,38 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
             tvCaption.setText(post.getCaption());
             Date createdAt = post.getCreatedAt();
             tvRelativeTimeAgo.setText(Post.calculateTimeAgo(createdAt));
+
+            //Profile Image
+            ParseFile profileImage = post.getUser().getParseFile(Post.KEY_PROFILE_IMAGE);
+            if (profileImage != null) {
+                Glide.with(context)
+                        .load(profileImage.getUrl())
+                        .transform(new CircleCrop())
+                        .into(ivProfileImage);
+            } else {
+                ivProfileImage.setImageResource(R.drawable.instagram_user_outline_24);
+            }
+
+            //Post Image
             ParseFile image = post.getImage();
             if (image != null) {
                 Glide.with(context)
                         .load(image.getUrl())
                         .into(ivImage);
+            }
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Log.i(TAG, "ViewHolder clicked!");
+            int position = getAdapterPosition();
+            Log.i("Check", "onClick " + position);
+            if (position != RecyclerView.NO_POSITION) {
+                Post post = posts.get(position);
+                Intent intent = new Intent(context, PostDetailActivity.class);
+                intent.putExtra(Post.class.getSimpleName(), Parcels.wrap(post));
+                context.startActivity(intent);
             }
         }
     }
