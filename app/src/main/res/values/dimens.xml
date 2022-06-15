@@ -4,4 +4,5 @@
     <dimen name="medium_margin">10dp</dimen>
     <dimen name="large_margin">15dp</dimen>
     <dimen name="square_image_size">385dp</dimen>
+    <dimen name="line_view_height">0.25dp</dimen>
 </resources>
