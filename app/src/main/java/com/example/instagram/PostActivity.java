@@ -67,6 +67,7 @@ public class PostActivity extends AppCompatActivity {
             return;
         }
         ParseUser currentUser = ParseUser.getCurrentUser();
+
         savePost(caption, currentUser, photoFile);
         finish();
     }

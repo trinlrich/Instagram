@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
 
+import java.util.Date;
 import java.util.List;
 
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
@@ -47,17 +48,21 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
         private TextView tvUsername;
         private ImageView ivImage;
         private TextView tvCaption;
+        private TextView tvRelativeTimeAgo;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvCaption = itemView.findViewById(R.id.tvCaption);
+            tvRelativeTimeAgo = itemView.findViewById(R.id.tvRelativeTimeAgo);
         }
 
         public void bind(Post post) {
             tvUsername.setText(post.getUser().getUsername());
             tvCaption.setText(post.getCaption());
+            Date createdAt = post.getCreatedAt();
+            tvRelativeTimeAgo.setText(Post.calculateTimeAgo(createdAt));
             ParseFile image = post.getImage();
             if (image != null) {
                 Glide.with(context)
