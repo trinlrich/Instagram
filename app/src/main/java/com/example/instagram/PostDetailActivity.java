@@ -32,8 +32,7 @@ public class PostDetailActivity extends AppCompatActivity {
         tvRelativeTimeAgo = findViewById(R.id.tvRelativeTimeAgo);
 
         Intent intent = getIntent();
-        String string = Post.class.getSimpleName();
-        post = (Post) Parcels.unwrap(intent.getParcelableExtra(Post.class.getSimpleName()));
+        post = Parcels.unwrap(intent.getParcelableExtra(Post.class.getSimpleName()));
 
         tvUsername.setText(post.getUser().getUsername());
         tvCaption.setText(post.getCaption());
