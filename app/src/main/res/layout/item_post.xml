@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:orientation="vertical"
-    android:layout_centerHorizontal="true">
+    android:layout_centerHorizontal="true"
+    android:orientation="vertical">
 
     <!-- TODO:: Change text appearance; only for reference -->
     <TextView
@@ -22,9 +21,10 @@
         android:id="@+id/ivImage"
         android:layout_width="match_parent"
         android:layout_height="@dimen/square_image_size"
-        android:layout_marginStart="@dimen/large_margin"
+        android:layout_below="@+id/tvUsername"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="@dimen/small_margin"
-        android:layout_marginEnd="@dimen/large_margin"
+        android:layout_marginEnd="0dp"
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -32,9 +32,22 @@
         android:id="@+id/tvCaption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/ivImage"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginEnd="14dp"
+        tools:text="This is my caption!" />
+
+    <TextView
+        android:id="@+id/tvRelativeTimeAgo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCaption"
+        android:layout_alignParentStart="true"
         android:layout_marginStart="@dimen/large_margin"
         android:layout_marginTop="@dimen/small_margin"
-        android:layout_marginEnd="@dimen/large_margin"
         android:layout_marginBottom="@dimen/large_margin"
-        tools:text="This is my caption!" />
-</LinearLayout>
+        tools:text="1 d" />
+</RelativeLayout>

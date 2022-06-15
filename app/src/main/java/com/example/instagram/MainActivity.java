@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.bumptech.glide.load.model.UriLoader;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -25,11 +26,15 @@ public class MainActivity extends AppCompatActivity {
 
     protected PostsAdapter adapter;
     protected List<Post> allPosts;
+  
+    private EndlessRecyclerViewScrollListener scrollListener;
 
     private SwipeRefreshLayout swipeContainer;
     private RecyclerView rvPosts;
     Button btnNewPost;
     Button btnLogout;
+
+    Long maxId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +48,17 @@ public class MainActivity extends AppCompatActivity {
         btnNewPost = findViewById(R.id.btnNewPost);
         btnLogout = findViewById(R.id.btnLogout);
 
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rvPosts.setAdapter(adapter);
-        rvPosts.setLayoutManager(new LinearLayoutManager(this));
+        rvPosts.setLayoutManager(linearLayoutManager);
+
+        scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                loadNextDataFromParse(maxId);
+            }
+        };
+        rvPosts.addOnScrollListener(scrollListener);
         queryPosts();
 
         // Lookup the swipe container view
@@ -101,13 +115,36 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void loadNextDataFromParse(Long offset) {
+        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+        query.include(Post.KEY_USER);
+        query.setSkip(Math.toIntExact(offset));
+        query.setLimit(5);
+        query.addDescendingOrder("createdAt");
+        query.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Post> posts, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with getting posts", e);
+                    return;
+                }
+                for (Post post : posts) {
+                    Log.i(TAG, "Post: " + post.getCaption() + ", username: " + post.getUser().getUsername());
+                }
+                allPosts.addAll(posts);
+                adapter.notifyDataSetChanged();
+                maxId += offset;
+            }
+        });
+    }
+
     private void queryPosts() {
         // specify what type of data we want to query - Post.class
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         // include data referred by user key
         query.include(Post.KEY_USER);
         // limit query to latest 20 items
-        query.setLimit(20);
+        query.setLimit(5);
         // order posts by creation date (newest first)
         query.addDescendingOrder("createdAt");
         // start an asynchronous call for posts
@@ -128,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
                 // save received posts to list and notify adapter of new data
                 allPosts.addAll(posts);
                 adapter.notifyDataSetChanged();
+                maxId = Long.valueOf(posts.size());
             }
         });
     }
