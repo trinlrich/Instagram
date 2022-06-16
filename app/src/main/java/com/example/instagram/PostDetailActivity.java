@@ -9,7 +9,6 @@ import android.widget.*;
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
 
-import org.parceler.Parcel;
 import org.parceler.Parcels;
 
 public class PostDetailActivity extends AppCompatActivity {
@@ -26,7 +25,7 @@ public class PostDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
 
-        tvUsername = findViewById(R.id.tvUsername);
+        tvUsername = findViewById(R.id.tvName);
         ivImage = findViewById(R.id.ivImage);
         tvCaption = findViewById(R.id.tvCaption);
         tvRelativeTimeAgo = findViewById(R.id.tvRelativeTimeAgo);

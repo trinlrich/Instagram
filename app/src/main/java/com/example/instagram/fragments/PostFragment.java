@@ -84,7 +84,7 @@ public class PostFragment extends Fragment {
         ParseUser currentUser = ParseUser.getCurrentUser();
 
         savePost(caption, currentUser, photoFile);
-//        finish();
+        getActivity().finish();
     }
 
     private void savePost(String caption, ParseUser currentUser, File photoFile) {

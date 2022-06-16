@@ -40,8 +40,6 @@ public class FeedFragment extends Fragment {
 
     private SwipeRefreshLayout swipeContainer;
     private RecyclerView rvPosts;
-    private Button btnNewPost;
-    private Button btnLogout;
 
     Long maxId;
 
@@ -64,8 +62,6 @@ public class FeedFragment extends Fragment {
         adapter = new PostsAdapter(getContext(), allPosts);
 
         rvPosts = view.findViewById(R.id.rvPosts);
-        btnNewPost = view.findViewById(R.id.btnNewPost);
-        btnLogout = view.findViewById(R.id.btnLogout);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         rvPosts.setAdapter(adapter);
@@ -185,21 +181,9 @@ public class FeedFragment extends Fragment {
                 allPosts.addAll(posts);
                 adapter.notifyDataSetChanged();
                 maxId = Long.valueOf(posts.size());
+
+                Log.i(TAG, allPosts.get(0).getUser().getString("name"));
             }
         });
-    }
-
-    public void onNewPostClick(View view) {
-        Intent intent = new Intent(getContext(), PostFragment.class);
-        startActivity(intent);
-    }
-
-    public void onLogoutClick(View view) {
-        ParseUser.logOutInBackground();
-        ParseUser current = ParseUser.getCurrentUser();
-
-        Intent intent = new Intent(getContext(), LoginActivity.class);
-        startActivity(intent);
-//        finish();
     }
 }

@@ -22,6 +22,8 @@ public class Post extends ParseObject {
     public static final String KEY_CAPTION = "caption";
     public static final String KEY_IMAGE = "image";
     public static final String KEY_USER = "user";
+    public static final String KEY_NAME = "name";
+    public static final String KEY_BIO = "bio";
     public static final String KEY_PROFILE_IMAGE = "profileImage";
 
     public Post() {};
