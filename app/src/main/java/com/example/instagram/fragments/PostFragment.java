@@ -11,8 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -25,10 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.instagram.EndlessRecyclerViewScrollListener;
 import com.example.instagram.Post;
-import com.example.instagram.PostActivity;
-import com.example.instagram.PostsAdapter;
 import com.example.instagram.R;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -36,7 +31,6 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.File;
-import java.util.List;
 
 public class PostFragment extends Fragment {
 
@@ -90,7 +84,7 @@ public class PostFragment extends Fragment {
         ParseUser currentUser = ParseUser.getCurrentUser();
 
         savePost(caption, currentUser, photoFile);
-//        finish();
+        getActivity().finish();
     }
 
     private void savePost(String caption, ParseUser currentUser, File photoFile) {

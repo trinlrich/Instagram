@@ -4,8 +4,11 @@
     <dimen name="medium_margin">10dp</dimen>
     <dimen name="large_margin">15dp</dimen>
 
-    <dimen name="square_image_size">385dp</dimen>
-    <dimen name="profile_image_size">30dp</dimen>
+    <dimen name="square_image_size">410dp</dimen>
+    <dimen name="small_profile_image_size">30dp</dimen>
+    <dimen name="large_profile_image_size">125dp</dimen>
 
     <dimen name="line_view_height">0.25dp</dimen>
+
+    <dimen name="button_height">40dp</dimen>
 </resources>

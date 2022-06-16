@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.example.instagram.fragments.FeedFragment;
 import com.example.instagram.fragments.PostFragment;
+import com.example.instagram.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         // define your fragments here
         final Fragment feedFragment = new FeedFragment();
         final Fragment postFragment = new PostFragment();
-//        final Fragment fragment3 = new ThirdFragment();
+        final Fragment profileFragment = new ProfileFragment();
 
         feed = findViewById(R.id.action_feed);
         post = findViewById(R.id.action_post);
@@ -55,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
                         Log.i(TAG, "Post Fragment");
                         fragment = postFragment;
                         break;
-//                    case R.id.action_profile:
-//                        fragment = profileFragment;
-//                        break;
+                    case R.id.action_profile:
+                        fragment = profileFragment;
+                        break;
                     default:
                         fragment = postFragment;
                         break;

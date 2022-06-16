@@ -62,7 +62,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
-            tvUsername = itemView.findViewById(R.id.tvUsername);
+            tvUsername = itemView.findViewById(R.id.tvName);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvCaption = itemView.findViewById(R.id.tvCaption);
             tvRelativeTimeAgo = itemView.findViewById(R.id.tvRelativeTimeAgo);
@@ -82,7 +82,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
                         .transform(new CircleCrop())
                         .into(ivProfileImage);
             } else {
-                ivProfileImage.setImageResource(R.drawable.instagram_user_outline_24);
+                ivProfileImage.setImageResource(R.drawable.empty_profile);
             }
 
             //Post Image
