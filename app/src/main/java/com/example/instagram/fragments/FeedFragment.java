@@ -181,8 +181,6 @@ public class FeedFragment extends Fragment {
                 allPosts.addAll(posts);
                 adapter.notifyDataSetChanged();
                 maxId = Long.valueOf(posts.size());
-
-                Log.i(TAG, allPosts.get(0).getUser().getString("name"));
             }
         });
     }

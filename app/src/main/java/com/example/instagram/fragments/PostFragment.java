@@ -69,6 +69,8 @@ public class PostFragment extends Fragment {
                 onLaunchCamera(v);
             }
         });
+
+        btnPost.setOnClickListener(this::onPostClick);
     }
 
     public void onPostClick(View view) {
@@ -84,7 +86,6 @@ public class PostFragment extends Fragment {
         ParseUser currentUser = ParseUser.getCurrentUser();
 
         savePost(caption, currentUser, photoFile);
-        getActivity().finish();
     }
 
     private void savePost(String caption, ParseUser currentUser, File photoFile) {

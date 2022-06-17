@@ -12,7 +12,7 @@
         <entry key="app/src/main/res/drawable/selector_button_feed.xml" value="0.192" />
         <entry key="app/src/main/res/drawable/selector_button_post.xml" value="0.192" />
         <entry key="app/src/main/res/drawable/selector_button_profile.xml" value="0.192" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.15137786865234376" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2560470581054688" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22591857910156252" />
         <entry key="app/src/main/res/layout/activity_post.xml" value="0.203125" />
         <entry key="app/src/main/res/layout/activity_post_detail.xml" value="0.25672664918761323" />

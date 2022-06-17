@@ -70,13 +70,15 @@ public class PostGridAdapter extends RecyclerView.Adapter<PostGridAdapter.ViewHo
         }
 
         public void bind(Post post) {
-            ParseFile image = post.getImage();
-            if (image != null) {
-                Glide.with(context)
-                        .load(image.getUrl())
-                        .into(ivPost);
+            if (post != null) {
+                ParseFile image = post.getImage();
+                if (image != null) {
+                    Glide.with(context)
+                            .load(image.getUrl())
+                            .into(ivPost);
+                }
+                itemView.setOnClickListener(this);
             }
-            itemView.setOnClickListener(this);
         }
 
         @Override

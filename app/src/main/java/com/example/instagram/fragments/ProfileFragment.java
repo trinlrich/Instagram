@@ -108,7 +108,6 @@ public class ProfileFragment extends Fragment {
         rvPosts = view.findViewById(R.id.rvPosts);
 
         ParseFile image = currentUser.getParseFile(Post.KEY_PROFILE_IMAGE);
-        Log.i(TAG, String.valueOf(currentUser.containsKey("hippo")));
         if (image != null) {
             Glide.with(getContext())
                     .load(image.getUrl())
@@ -193,8 +192,8 @@ public class ProfileFragment extends Fragment {
 
                 if (usersPosts.size() > 0) {
                     tvName.setText(usersPosts.get(0).getUser().getString(Post.KEY_NAME));
+                    tvBio.setText(usersPosts.get(0).getUser().getString(Post.KEY_BIO));
                 }
-                tvBio.setText(usersPosts.get(0).getUser().getString(Post.KEY_BIO));
             }
         });
     }
@@ -249,16 +248,16 @@ public class ProfileFragment extends Fragment {
                 // Load the taken image into a preview
                 ivProfile.setImageBitmap(takenImage);
 
-//                ParseFile newFile = new ParseFile(photoFile);
-//
-//                currentUser.put(Post.KEY_PROFILE_IMAGE, newFile);
-//                currentUser.saveInBackground(e -> {
-//                    if (e != null){
-//                        Log.e(TAG, String.valueOf(e));
-//                    }else{
-//                        Log.d(TAG,"Object saved.");
-//                    }
-//                });
+                ParseFile newFile = new ParseFile(photoFile);
+
+                currentUser.put(Post.KEY_PROFILE_IMAGE, newFile);
+                currentUser.saveInBackground(e -> {
+                    if (e != null){
+                        Log.e(TAG, String.valueOf(e));
+                    }else{
+                        Log.d(TAG,"Object saved.");
+                    }
+                });
             } else { // Result was a failure
                 Toast.makeText(getContext(), "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
