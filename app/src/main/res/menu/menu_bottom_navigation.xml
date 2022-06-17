@@ -5,6 +5,7 @@
         android:id="@+id/action_feed"
         android:enabled="true"
         android:icon="@drawable/selector_button_feed"
+        android:iconTintMode="add"
         android:title="@string/nav_feed"
         app:showAsAction="ifRoom" />
     <item

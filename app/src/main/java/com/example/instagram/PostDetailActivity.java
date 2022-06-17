@@ -1,5 +1,6 @@
 package com.example.instagram;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,6 +16,8 @@ public class PostDetailActivity extends AppCompatActivity {
 
     private Post post;
 
+    private ActionBar actionBar;
+
     private TextView tvUsername;
     private ImageView ivImage;
     private TextView tvCaption;
@@ -24,6 +27,12 @@ public class PostDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
+
+        actionBar = getSupportActionBar();
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setLogo(R.drawable.nav_logo_whiteout);
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
 
         tvUsername = findViewById(R.id.tvName);
         ivImage = findViewById(R.id.ivImage);

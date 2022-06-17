@@ -1,6 +1,7 @@
 package com.example.instagram;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -19,17 +20,25 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
 
+    private ActionBar actionBar;
+
     final FragmentManager fragmentManager = getSupportFragmentManager();
     private BottomNavigationView bottomNavigationView;
 
-    BottomNavigationItemView feed;
-    BottomNavigationItemView post;
-    BottomNavigationItemView profile;
+    private BottomNavigationItemView feed;
+    private BottomNavigationItemView post;
+    private BottomNavigationItemView profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        actionBar = getSupportActionBar();
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setLogo(R.drawable.nav_logo_whiteout);
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 

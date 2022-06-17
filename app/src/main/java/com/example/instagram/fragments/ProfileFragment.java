@@ -249,16 +249,16 @@ public class ProfileFragment extends Fragment {
                 // Load the taken image into a preview
                 ivProfile.setImageBitmap(takenImage);
 
-                ParseFile newFile = new ParseFile(photoFile);
-
-                currentUser.put(Post.KEY_PROFILE_IMAGE, newFile);
-                currentUser.saveInBackground(e -> {
-                    if (e != null){
-                        Log.e(TAG, String.valueOf(e));
-                    }else{
-                        Log.d(TAG,"Object saved.");
-                    }
-                });
+//                ParseFile newFile = new ParseFile(photoFile);
+//
+//                currentUser.put(Post.KEY_PROFILE_IMAGE, newFile);
+//                currentUser.saveInBackground(e -> {
+//                    if (e != null){
+//                        Log.e(TAG, String.valueOf(e));
+//                    }else{
+//                        Log.d(TAG,"Object saved.");
+//                    }
+//                });
             } else { // Result was a failure
                 Toast.makeText(getContext(), "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
