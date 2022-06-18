@@ -5,13 +5,17 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.18885869565217392" />
         <entry key="app/src/main/res/drawable-v24/selector_button_login.xml" value="0.1495" />
+        <entry key="app/src/main/res/drawable/animated_logo.xml" value="0.202" />
         <entry key="app/src/main/res/drawable/bg_gradient.xml" value="0.1495" />
         <entry key="app/src/main/res/drawable/button_background.xml" value="0.1495" />
         <entry key="app/src/main/res/drawable/edit_text_background.xml" value="0.1495" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.21" />
+        <entry key="app/src/main/res/drawable/logo_vector.xml" value="0.21" />
         <entry key="app/src/main/res/drawable/selector_button_bg.xml" value="0.224" />
         <entry key="app/src/main/res/drawable/selector_button_feed.xml" value="0.192" />
         <entry key="app/src/main/res/drawable/selector_button_post.xml" value="0.192" />
         <entry key="app/src/main/res/drawable/selector_button_profile.xml" value="0.192" />
+        <entry key="app/src/main/res/drawable/splash_background.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2560470581054688" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22591857910156252" />
         <entry key="app/src/main/res/layout/activity_post.xml" value="0.203125" />

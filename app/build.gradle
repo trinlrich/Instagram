@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 31
 
     defaultConfig {
         applicationId "com.example.instagram"
-        minSdk 29
+        minSdk 30
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -48,5 +48,7 @@ dependencies {
 
     implementation 'org.parceler:parceler-api:1.1.12'
     annotationProcessor 'org.parceler:parceler:1.1.12'
+
+    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
 }
 

@@ -114,6 +114,8 @@ public class ProfileFragment extends Fragment {
                     .transform(new CircleCrop())
                     .into(ivProfile);
         }
+        tvName.setText(currentUser.getString(Post.KEY_NAME));
+        tvBio.setText(currentUser.getString(Post.KEY_BIO));
 
         btnEditProfile.setOnClickListener(this::onLaunchCamera);
         btnLogout.setOnClickListener(this::onLogoutClick);
@@ -189,11 +191,6 @@ public class ProfileFragment extends Fragment {
                 adapter.notifyDataSetChanged();
                 maxId = Long.valueOf(posts.size());
                 Log.i(TAG, String.valueOf(usersPosts.size()));
-
-                if (usersPosts.size() > 0) {
-                    tvName.setText(usersPosts.get(0).getUser().getString(Post.KEY_NAME));
-                    tvBio.setText(usersPosts.get(0).getUser().getString(Post.KEY_BIO));
-                }
             }
         });
     }
