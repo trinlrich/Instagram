@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setLogo(R.drawable.nav_logo_whiteout);
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setBackgroundDrawable(getDrawable(R.color.white));
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
