@@ -5,7 +5,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="light_grey">#E6E6E6</color>
     <color name="grey">#bfbfbf</color>
+    <color name="darker_grey">#8F8F8F</color>
     <color name="white">#fff</color>
     <color name="black">#000000</color>
     <color name="link_blue">#4d94ff</color>
@@ -16,5 +18,7 @@
     <color name="mcam_color_dark">#424242</color>
 
     <color name="translucent_color">#19FFFFFF</color>
+    <color name="button_outline">#4FFFFFFF</color>
+    <color name="button_text">#A4FFFFFF</color>
 
 </resources>

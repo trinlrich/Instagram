@@ -5,21 +5,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.*;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.parse.ParseFile;
 
 import org.parceler.Parcels;
 
 public class PostDetailActivity extends AppCompatActivity {
 
+    public static final String TAG = "PostDetailActivity";
+
     private Post post;
 
     private ActionBar actionBar;
 
     private TextView tvUsername;
-    private ImageView ivImage;
+    private ImageView ivProfileImage;
+    private ImageView ivPostImage;
     private TextView tvCaption;
     private TextView tvRelativeTimeAgo;
 
@@ -35,7 +40,8 @@ public class PostDetailActivity extends AppCompatActivity {
         actionBar.setDisplayShowHomeEnabled(true);
 
         tvUsername = findViewById(R.id.tvName);
-        ivImage = findViewById(R.id.ivImage);
+        ivProfileImage = findViewById(R.id.ivProfileImage);
+        ivPostImage = findViewById(R.id.ivPostImage);
         tvCaption = findViewById(R.id.tvCaption);
         tvRelativeTimeAgo = findViewById(R.id.tvRelativeTimeAgo);
 
@@ -48,9 +54,20 @@ public class PostDetailActivity extends AppCompatActivity {
 
         ParseFile image = post.getImage();
         if (image != null) {
+            Log.i(TAG, image.getUrl());
             Glide.with(this)
                     .load(image.getUrl())
-                    .into(ivImage);
+                    .into(ivPostImage);
+        }
+
+        ParseFile profileImage = post.getUser().getParseFile(Comment.KEY_PROFILE_IMAGE);
+        if (profileImage != null) {
+            Glide.with(this)
+                    .load(profileImage.getUrl())
+                    .transform(new CircleCrop())
+                    .into(ivProfileImage);
+        } else {
+            ivProfileImage.setImageResource(R.drawable.empty_profile);
         }
     }
 }

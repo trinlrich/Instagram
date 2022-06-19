@@ -57,7 +57,6 @@ public class PostFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        setContentView(R.layout.activity_post);
 
         ibImage = view.findViewById(R.id.ibImage);
         etCaption = view.findViewById(R.id.etCaption);

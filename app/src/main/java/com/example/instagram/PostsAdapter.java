@@ -11,14 +11,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.example.instagram.fragments.CommentFragment;
+import com.example.instagram.fragments.ProfileFragment;
 import com.parse.ParseFile;
 
 import org.parceler.Parcels;
 
+import java.lang.reflect.Array;
 import java.util.Date;
 import java.util.List;
 
@@ -51,19 +57,23 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
         return posts.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageButton ivProfileImage;
         private TextView tvUsername;
-        private ImageView ivImage;
+        private ImageView ivPostImage;
         private TextView tvCaption;
+        private ImageButton ibLike;
+        private ImageButton ibComment;
         private TextView tvRelativeTimeAgo;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
             tvUsername = itemView.findViewById(R.id.tvName);
-            ivImage = itemView.findViewById(R.id.ivImage);
+            ivPostImage = itemView.findViewById(R.id.ivPostImage);
+            ibLike = itemView.findViewById(R.id.ibLike);
+            ibComment = itemView.findViewById(R.id.ibComment);
             tvCaption = itemView.findViewById(R.id.tvCaption);
             tvRelativeTimeAgo = itemView.findViewById(R.id.tvRelativeTimeAgo);
         }
@@ -84,20 +94,31 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
             } else {
                 ivProfileImage.setImageResource(R.drawable.empty_profile);
             }
+            ivProfileImage.setOnClickListener(this::onProfileClick);
 
             //Post Image
             ParseFile image = post.getImage();
             if (image != null) {
                 Glide.with(context)
                         .load(image.getUrl())
-                        .into(ivImage);
+                        .into(ivPostImage);
             }
-            itemView.setOnClickListener(this);
+            ivPostImage.setOnClickListener(this::onImageClick);
+
+            //Like and Caption Buttons
+            ibLike.setOnClickListener(this::onLikeClick);
+            ibComment.setOnClickListener(this::onCommentClick);
         }
 
-        @Override
-        public void onClick(View v) {
-            Log.i(TAG, "ViewHolder clicked!");
+        public void onProfileClick(View view) {
+            Fragment fragment = new ProfileFragment();
+            AppCompatActivity activity = (AppCompatActivity) view.getContext();
+            FragmentManager fragmentManager = activity.getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
+        }
+
+        public void onImageClick(View v) {
+            Log.i(TAG, "Image clicked!");
             int position = getAdapterPosition();
             Log.i("Check", "onClick " + position);
             if (position != RecyclerView.NO_POSITION) {
@@ -106,6 +127,42 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
                 intent.putExtra(Post.class.getSimpleName(), Parcels.wrap(post));
                 context.startActivity(intent);
             }
+        }
+
+        public void onLikeClick(View view) {
+            Log.i(TAG, "Like clicked!");
+            int position = getAdapterPosition();
+            Post post = posts.get(position);
+
+            Log.i(TAG, String.valueOf(post.has("something")));
+            Array likes = (Array) post.get("likes");
+
+//            post.add("likes", ParseUser.getCurrentUser());
+            Log.i(TAG, "Image liked!");
+
+//            ParseQuery<ParseObject> query = ParseQuery.getQuery("Post");
+//            query.whereEqualTo(ParseObject.KEY_OBJECT_ID, post.getObjectId());
+//            query.findInBackground(new FindCallback<ParseObject>() {
+//                public void done(List<ParseObject> list, ParseException e) {
+//                    if (e == null) {
+//                        ParseObject person = list.get(0);
+//                        person.put("firstName", "Johan");
+//                        person.saveInBackground();
+//                    } else {
+//                        Log.d("score", "Error: " + e.getMessage());
+//                    }
+//                }
+//            });
+
+            ibLike.setImageResource(R.drawable.ufi_heart_active);
+
+        }
+
+        public void onCommentClick(View view) {
+            Fragment fragment = new CommentFragment();
+            AppCompatActivity activity = (AppCompatActivity) view.getContext();
+            FragmentManager fragmentManager = activity.getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
         }
     }
 

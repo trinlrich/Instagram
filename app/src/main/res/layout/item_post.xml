@@ -7,34 +7,42 @@
     android:layout_centerHorizontal="true">
 
     <!-- TODO:: Change text appearance; only for reference -->
-    <ImageButton
-        android:id="@+id/ivProfileImage"
+    <ImageView
+        android:id="@+id/ivProfileImageBorder"
         android:layout_width="@dimen/small_profile_image_size"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ivImage"
+        android:layout_height="@dimen/small_profile_image_size"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="@dimen/medium_margin"
         android:layout_marginTop="@dimen/large_margin"
-        android:layout_marginBottom="@dimen/small_margin"
+        app:srcCompat="@drawable/profile_border" />
+
+    <ImageButton
+        android:id="@+id/ivProfileImage"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="12.30dp"
+        android:layout_marginTop="17.30dp"
         android:background="@null"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/empty_profile"
         tools:srcCompat="@drawable/empty_profile" />
 
     <TextView
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/small_margin"
-        android:layout_marginTop="@dimen/large_margin"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="@dimen/small_margin"
-        android:layout_toEndOf="@+id/ivProfileImage"
+        android:layout_toEndOf="@id/ivProfileImageBorder"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         tools:text="trinit.ee" />
 
     <ImageView
-        android:id="@+id/ivImage"
+        android:id="@+id/ivPostImage"
         android:layout_width="match_parent"
         android:layout_height="@dimen/square_image_size"
         android:layout_below="@+id/tvName"
@@ -44,15 +52,37 @@
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <ImageButton
+        android:id="@+id/ibLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivPostImage"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="@dimen/large_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/ufi_heart" />
+
+    <ImageButton
+        android:id="@+id/ibComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivPostImage"
+        android:layout_marginStart="@dimen/large_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_toEndOf="@+id/ibLike"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/ufi_comment" />
+
     <TextView
         android:id="@+id/tvCaption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ivImage"
+        android:layout_below="@+id/ibLike"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginTop="@dimen/medium_margin"
         android:layout_marginEnd="14dp"
         tools:text="This is my caption!" />
 
@@ -63,7 +93,7 @@
         android:layout_below="@+id/tvCaption"
         android:layout_alignParentStart="true"
         android:layout_marginStart="@dimen/large_margin"
-        android:layout_marginTop="@dimen/small_margin"
-        tools:text="1 d" />
+        android:layout_marginTop="@dimen/medium_margin"
+        tools:text="5 minutes ago" />
 
 </RelativeLayout>

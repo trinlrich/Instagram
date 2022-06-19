@@ -21,4 +21,13 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:statusBarColor">@color/colorAccent</item>
     </style>
+
+    <style name="LoginButtonTheme">
+        <item name="colorPrimary">@color/button_outline</item>
+    </style>
+
+    <style name="SmallTextStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/darker_grey</item>
+        <item name="android:textSize">10sp</item>
+    </style>
 </resources>

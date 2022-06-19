@@ -43,10 +43,8 @@ import com.example.instagram.SpacesItemDecoration;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.parse.boltsinternal.Task;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -105,7 +103,7 @@ public class ProfileFragment extends Fragment {
         tvBio = view.findViewById(R.id.tvBio);
         btnEditProfile = view.findViewById(R.id.btnEditProfile);
         btnLogout = view.findViewById(R.id.btnLogout);
-        rvPosts = view.findViewById(R.id.rvPosts);
+        rvPosts = view.findViewById(R.id.rvComments);
 
         ParseFile image = currentUser.getParseFile(Post.KEY_PROFILE_IMAGE);
         if (image != null) {
